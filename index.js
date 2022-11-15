@@ -10,7 +10,7 @@ const questions = () => {
     {
         type: "input",
         name: "github",
-        message: "Please enter your GitHub Username (Required)",
+        message: "Please enter your GitHub Username",
         validate: (githubInput) => {
           if (githubInput) {
             return true;
@@ -23,7 +23,7 @@ const questions = () => {
     {
       type: "input",
       name: "title",
-      message: "What is your project title? (Required)",
+      message: "What is your project title?",
       validate: (projectTitle) => {
         if (projectTitle) {
           return true;
@@ -36,7 +36,7 @@ const questions = () => {
     {
       type: "input",
       name: "description",
-      message: "Please enter a short description of your project (Required)",
+      message: "Please enter a short description of your project",
       validate: (projectDescription) => {
         if (projectDescription) {
           return true;
@@ -63,7 +63,7 @@ const questions = () => {
     {
       type: "list",
       name: "license",
-      message: "Please select a license for your project (Required):",
+      message: "Please select a license for your project:",
       choices: ["MIT", "APACHE(2.0)", "GPL(3.0)", "BSD(3)", "MPL(2.0)", "CDDL(1.0)", "EPL(2.0)", "None"],
       validate: (projectLicense) => {
         if (projectLicense) {
@@ -94,7 +94,7 @@ const questions = () => {
     {
         type: "input",
         name: "website",
-        message: "Please enter your project website (Required)",
+        message: "Please enter your project website",
         validate: (projectWebsite) => {
           if (projectWebsite) {
             return true;
@@ -107,7 +107,7 @@ const questions = () => {
     {
       type: "input",
       name: "email",
-      message: "What's your email address? (Required)",
+      message: "What's your email address?",
       validate: (emailInput) => {
         if (emailInput) {
           return true;
