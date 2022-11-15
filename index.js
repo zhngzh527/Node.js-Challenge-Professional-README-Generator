@@ -2,7 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
-const util = require("util");
+// const util = require("util");
 
 // TODO: Create an array of questions for user input
 const questions = () => {
@@ -61,6 +61,32 @@ const questions = () => {
       ],
     },
     {
+      type: "list",
+      name: "license",
+      message: "Please select a license for your project (Required):",
+      choices: ["MIT", "APACHE(2.0)", "GPL(3.0)", "BSD(3)", "MPL(2.0)", "CDDL(1.0)", "EPL(2.0)", "None"],
+      validate: (projectLicense) => {
+        if (projectLicense) {
+          return true;
+        } else {
+          console.log("Please choose a project license type!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "installation",
+      message: "What command(s) should be run to install dependencies?",
+      default: "npm install",
+    },
+    {
+      type: "input",
+      name: "test",
+      message: "What command(s) should be run to run tests?",
+      default: "npm test",
+    },
+    {
       type: "input",
       name: "usage",
       message: "What does the user need to know about using the repo?",
@@ -91,6 +117,19 @@ const questions = () => {
         }
       },
     },
+    {
+      type: "input",
+      name: "contributing",
+      message: "Please enter the contributor name(s) for this project:",
+      validate: (contributorName) => {
+        if (contributorName) {
+          return true;
+        } else {
+          console.log("Please enter contributor(s) name!");
+          return false;
+        }
+      },
+    },
   ]);
 };
 
@@ -117,8 +156,8 @@ function init() {
   questions()
     .then((response) => generateMarkdown(response))
     // template literal send to writeToFile
-    .then((res) => {
-      writeToFile(res);
+    .then((response) => {
+      writeToFile(response);
       console.log("Success! Check out your generatedREADME.md");
     });
 }
